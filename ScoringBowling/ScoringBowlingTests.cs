@@ -27,7 +27,7 @@ namespace ScoringBowling
             var score = _game.GetPlayer(0).CurrentScore();
 
             //Then
-            Assert.AreEqual(0, score, "The score should be 0.");
+            Assert.AreEqual(0, score, "Game starte, the score should be 0.");
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace ScoringBowling
             }
 
             //Then
-            Assert.AreEqual(0, currentPlayer.CurrentScore(), "The CurrentScore should be 0.");
+            Assert.AreEqual(0, currentPlayer.CurrentScore(), "All balls hits the gutter, the CurrentScore should be 0.");
         }
 
         [TestMethod]
@@ -62,14 +62,14 @@ namespace ScoringBowling
             // a player instance 
             var currentPlayer = _game.GetPlayer(player);
 
-            //and we roll a gutte game
+            //and we roll a normal game
             for (int i = 0; i < 20; i++)
             {
                 currentPlayer.Roll(3);
             }
 
             //Then
-            Assert.AreEqual(60, currentPlayer.CurrentScore(), "The CurrentScore should be 60.");
+            Assert.AreEqual(60, currentPlayer.CurrentScore(), "10 frames 2 rolls a frame, the CurrentScore should be 60.");
         }
 
         [TestMethod]
@@ -120,6 +120,7 @@ namespace ScoringBowling
 
             currentPlayer.Roll(5);
             currentPlayer.Roll(5);
+
             //Then 
             Assert.AreEqual(10, currentPlayer.CurrentScore(), "Player has spare score of 10");
             Assert.IsTrue(currentPlayer.HasSpare(), "Player has a spare");
